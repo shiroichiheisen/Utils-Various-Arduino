@@ -6,19 +6,19 @@ Library with various functions for the Arduino framework.
 
 In this library, you have:
 
-dw - Digital Write
+[dw - Digital Write](https://github.com/shiroichiheisen/Utils-Various-Arduino#dw-function)
 
-dr - Digital Read
+[dr - Digital Read](https://github.com/shiroichiheisen/Utils-Various-Arduino#dr-function)
 
-ar - Analog Read
+[ar - Analog Read](https://github.com/shiroichiheisen/Utils-Various-Arduino#ar-function)
 
-pwm - Control the PWM on Esp32
+[pwm - Control the PWM on Esp32](https://github.com/shiroichiheisen/Utils-Various-Arduino#pwm-function)
 
-ss - String Split
+[ss - String Split](https://github.com/shiroichiheisen/Utils-Various-Arduino#ss-function)
 
-ntc - ntc Reading     gnd-ntc-pin-resistor-vcc
+[ntc - ntc Reading](https://github.com/shiroichiheisen/Utils-Various-Arduino#ntc-function)
 
-ntc_cal - ntc Reading with the [Analog Read library](https://github.com/madhephaestus/ESP32AnalogRead) for calibrated readings
+[ntc_cal - ntc Reading Calibrated on the ESP32](https://github.com/shiroichiheisen/Utils-Various-Arduino#ntc_cal-function) 
 
 ---
 
