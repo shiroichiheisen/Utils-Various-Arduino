@@ -74,7 +74,7 @@ private:
 	float p, v, r1, ar, k, r25c;
 };
 
-// NTC sensor class using ESP32-S2AnalogRead - VCC-Resistor-PIN-NTC-GND
+// NTC sensor class using AnalogRead library
 class ntc_cal
 {
 public:
