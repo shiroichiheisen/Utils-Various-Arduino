@@ -55,6 +55,7 @@ class ss
 {
 public:
 	ss(String data);
+	void new_data(String data);
 	void rnw(char separator, int index);
 	void rnw(char separator, int index, char separator2, int index2);
 	String get(char separator, int index);

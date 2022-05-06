@@ -146,6 +146,12 @@ stringSplit.get('/', 0); //will output the 187
 stringSplit.get('/', 1); //will output the 1085
 ```
 
+To change the string on the object just use the following function:
+
+```
+stringSplit.new_data(String data);
+```
+
 ---
 
 ## ntc function:

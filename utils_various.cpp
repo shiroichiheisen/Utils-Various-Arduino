@@ -63,6 +63,11 @@ ss::ss(String data)
   data_received = data;
 }
 
+void ss::new_data(String data)
+{
+  data_received = data;
+}
+
 void ss::rnw(char separator, int index)
 {
   int found = 0;
