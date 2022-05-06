@@ -163,7 +163,7 @@ After declared, call the object with the celsius, fahrenheit or Kelvin temperatu
 "k" for kelvin
 
 ```
-tempSensor.r(temperature selection);
+tempSensor.r(String temperatureSelection);
 ```
 
 ---
@@ -189,5 +189,5 @@ After declared, call the object with the celsius, fahrenheit or Kelvin temperatu
 "k" for kelvin
 
 ```
-tempSensor.r(temperature selection);
+tempSensor.r(String temperatureSelection);
 ```
