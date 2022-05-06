@@ -154,7 +154,7 @@ Declare the NTC object with the pin to read, VCC voltage on the resistor, analog
 ntc tempSensor(int sensorPin, float vcc, int resistor, int analog_resolution, int kelvin, int resistance_25c)
 ```
 
-After declared, call the object with the celsius, fahrenheit or Kelvin temperature preference:
+After declared, read the NTC with the celsius, fahrenheit or Kelvin temperature preference:
 
 "c" for celsius
 
@@ -180,7 +180,7 @@ Declare the NTC object with the pin to read, VCC voltage on the resistor, analog
 ntc_cal tempSensor(int sensorPin, float vcc, int resistor, int analog_resolution, int kelvin, int resistance_25c)
 ```
 
-After declared, call the object with the celsius, fahrenheit or Kelvin temperature preference:
+After declared, read the NTC with the celsius, fahrenheit or Kelvin temperature preference:
 
 "c" for celsius
 
