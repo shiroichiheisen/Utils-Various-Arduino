@@ -4,6 +4,12 @@ Library with various functions for the Arduino framework.
 
 ## ☕ Using this library
 
+To use this library, you need to download, install the library, and include the following file in your project:
+
+```
+#include <utils_various.h>
+```
+
 In this library, you have:
 
 [dw - Digital Write](https://github.com/shiroichiheisen/Utils-Various-Arduino#dw-function)
