@@ -137,6 +137,28 @@ String ss::get(char separator, int index)
   return found > index ? data_received.substring(strIndex[0], strIndex[1]) : "";
 }
 
+vs::vs(String initialString,
+       int indexInitialString,
+       char charSeparator,
+       String finalString,
+       int indexFinalString);
+{
+  initial = initialString;
+  final = finalString;
+  separator = charSeparator;
+  initialI = indexInitialString;
+  finalI = indexFinalString;
+}
+
+vs::verify(String input, String &result, int resultIndex = 1)
+{
+  ss data_split(input);
+  if (data_split.get(separator, initialI).equals(initial) && data_split.get(separator, finalI).equals(final))
+    result = data_split.get(separator, resultIndex);
+  else
+    result = "";
+}
+
 ntc::ntc(int pin, float vcc, int resistor, int analog_resolution, int kelvin, int resistance_25c)
 {
   p = pin;

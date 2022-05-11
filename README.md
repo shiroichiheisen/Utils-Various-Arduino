@@ -22,6 +22,8 @@ In this library, you have:
 
 [ss - String Split](https://github.com/shiroichiheisen/Utils-Various-Arduino#ss-function)
 
+[vs - String verifier with ss](https://github.com/shiroichiheisen/Utils-Various-Arduino#vs-function)
+
 [ntc - ntc Reading](https://github.com/shiroichiheisen/Utils-Various-Arduino#ntc-function)
 
 [ntc_cal - ntc Reading Calibrated on the ESP32](https://github.com/shiroichiheisen/Utils-Various-Arduino#ntc_cal-function) 
@@ -150,6 +152,40 @@ To change the string on the object just use the following function:
 
 ```
 stringSplit.new_data(String data);
+```
+
+---
+
+## vs function:
+
+I am using to verify if on the serial data received have the trailing and leading string to confirm that the data is complete.
+
+To use declare the object with the:
+
+Initial String - The first string to verify - Mandatory
+
+Index Initial String - The index of the first string to verify - Default is 0
+
+Char Separator - The char to split the string - Default is '|'
+
+Final String - The final string to verify - Default is ''
+
+Index Final String - The index of the final string to verify - Default is 2
+
+```
+vs verifySerialData(String initialString, int indexInitialString, char separator, String finalString, int indexFinalString);
+```
+
+To verify the data to see if it is complete and get the data without the trailing and leading string use the:
+
+Input - The string to verify - Mandatory
+
+Result - The string without the trailing and leading string if it is complete, otherwise it will return blank "" - Its an pointer to the string to change - Mandatory
+
+ResultIndex - The index of the data without the trailing and leading string - Default is 1
+
+```
+verifySerialData.verify(String input, String &result, int resultIndex = 1);
 ```
 
 ---

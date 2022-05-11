@@ -64,6 +64,19 @@ private:
 	String data_received, data_reformed;
 };
 
+// Class to verify an string with the string split
+class vs
+{
+public:
+	vs(String initialString, int indexInitialString = 0, char charSeparator = '|', String finalString = "", int indexFinalString = 2);
+	void verify(String input, String &result, int resultIndex = 1);
+
+private:
+	String initial, final;
+	char separator;
+	int initialI, finalI;
+}
+
 // NTC sensor class - VCC-Resistor-PIN-NTC-GND
 class ntc
 {
