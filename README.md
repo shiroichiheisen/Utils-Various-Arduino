@@ -168,12 +168,14 @@ Index Initial String - The index of the first string to verify - Default is 0
 
 Char Separator - The char to split the string - Default is '|'
 
+Verify Error - The string to send if the data is not complete - Default is ""
+
 Final String - The final string to verify - Default is ''
 
 Index Final String - The index of the final string to verify - Default is 2
 
 ```
-vs verifySerialData(String initialString, int indexInitialString, char separator, String finalString, int indexFinalString);
+vs verifySerialData(String initialString, int indexInitialString, char separator, String verifyError, String finalString, int indexFinalString);
 ```
 
 To verify the data to see if it is complete and get the data without the trailing and leading string use the:
@@ -185,9 +187,33 @@ Result - The string without the trailing and leading string if it is complete, o
 ResultIndex - The index of the data without the trailing and leading string - Default is 1
 
 ```
-verifySerialData.verify(String input, String &result, int resultIndex = 1);
+verifySerialData.verify(String input, String &result, int resultIndex);
 ```
 
+If you want to get the data without the result string being on a pointer and returning as string use the:
+
+Input - The string to verify - Mandatory
+
+ResultIndex - The index of the data without the trailing and leading string - Default is 1
+
+```
+verifySerialData.verify(String input, int resultIndex);
+```
+
+Example:
+
+
+```
+String received;
+
+vs verifySerialData("test", 0, "/", "testO", 2); //Declare the object
+
+verifySerialData.verify("test/dataReceived/test0", received, 1); //Will set the string received to "dataReceived"
+
+verifySerialData.verify("test123/dataReceived/test0", received, 1); //Will set the string received to "" because the data is not complete (the initial string is not equal to the initial string set on the first line (test123 != test))
+
+received = verifySerialData.verify("test/dataReceived/test0", 1);
+```
 ---
 
 ## ntc function:

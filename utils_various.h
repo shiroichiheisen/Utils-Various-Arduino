@@ -68,11 +68,12 @@ private:
 class vs
 {
 public:
-	vs(String initialString, int indexInitialString = 0, char charSeparator = '|', String finalString = "", int indexFinalString = 2);
+	vs(String initialString, int indexInitialString = 0, char charSeparator = '|', String verifyError = "", String finalString = "", int indexFinalString = 2);
 	void verify(String input, String &result, int resultIndex = 1);
+	String verify(String input, int resultIndex = 1);
 
 private:
-	String initial, final;
+	String initial, final, verError;
 	char separator;
 	int initialI, finalI;
 };

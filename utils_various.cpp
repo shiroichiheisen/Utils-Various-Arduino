@@ -140,12 +140,14 @@ String ss::get(char separator, int index)
 vs::vs(String initialString,
        int indexInitialString,
        char charSeparator,
+       String verifyError,
        String finalString,
        int indexFinalString)
 {
   initial = initialString;
   final = finalString;
   separator = charSeparator;
+  verError = verifyError;
   initialI = indexInitialString;
   finalI = indexFinalString;
 }
@@ -156,7 +158,16 @@ void vs::verify(String input, String &result, int resultIndex)
   if (data_split.get(separator, initialI).equals(initial) && data_split.get(separator, finalI).equals(final))
     result = data_split.get(separator, resultIndex);
   else
-    result = "";
+    result = verError;
+}
+
+String vs::verify(String input, int resultIndex)
+{
+  ss data_split(input);
+  if (data_split.get(separator, initialI).equals(initial) && data_split.get(separator, finalI).equals(final))
+    return data_split.get(separator, resultIndex);
+  else
+    return verError;
 }
 
 ntc::ntc(int pin, float vcc, int resistor, int analog_resolution, int kelvin, int resistance_25c)
