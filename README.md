@@ -206,7 +206,7 @@ Example:
 ```
 String received;
 
-vs verifySerialData("test", 0, "/", "testO", 2); //Declare the object
+vs verifySerialData("test", 0, "/", "Error", "testO", 2); //Declare the object
 
 verifySerialData.verify("test/dataReceived/test0", received, 1); //Will set the string received to "dataReceived"
 
