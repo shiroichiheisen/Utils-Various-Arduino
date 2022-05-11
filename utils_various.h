@@ -75,7 +75,7 @@ private:
 	String initial, final;
 	char separator;
 	int initialI, finalI;
-}
+};
 
 // NTC sensor class - VCC-Resistor-PIN-NTC-GND
 class ntc

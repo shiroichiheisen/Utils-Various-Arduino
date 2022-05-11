@@ -141,7 +141,7 @@ vs::vs(String initialString,
        int indexInitialString,
        char charSeparator,
        String finalString,
-       int indexFinalString);
+       int indexFinalString)
 {
   initial = initialString;
   final = finalString;
@@ -150,7 +150,7 @@ vs::vs(String initialString,
   finalI = indexFinalString;
 }
 
-vs::verify(String input, String &result, int resultIndex = 1)
+void vs::verify(String input, String &result, int resultIndex)
 {
   ss data_split(input);
   if (data_split.get(separator, initialI).equals(initial) && data_split.get(separator, finalI).equals(final))
