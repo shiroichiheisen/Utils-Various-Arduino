@@ -208,11 +208,15 @@ String received;
 
 vs verifySerialData("test", 0, "/", "Error", "testO", 2); //Declare the object
 
-verifySerialData.verify("test/dataReceived/test0", received, 1); //Will set the string received to "dataReceived"
+verifySerialData.verify("test/dataReceived/test0", received, 1); 
+//Will set the string received to "dataReceived"
 
-verifySerialData.verify("test123/dataReceived/test0", received, 1); //Will set the string received to "Error" because the data is not complete (the initial string is not equal to the initial string set on the first line (test123 != test)
+verifySerialData.verify("test123/dataReceived/test0", received, 1); 
+//Will set the string received to "Error" because the data is not complete 
+(the initial string is not equal to the initial string set on the first line (test123 != test))
 
 received = verifySerialData.verify("test/dataReceived/test0", 1);
+//Will set the string received to "dataReceived"
 ```
 ---
 
