@@ -9,7 +9,13 @@ class dw
 public:
 	dw(int pin);
 	void h();
+	void high();
+	void open();
+	void on();
 	void l();
+	void low();
+	void close();
+	void off();
 
 private:
 	int pino;
@@ -21,6 +27,7 @@ class dr
 public:
 	dr(int pin);
 	int r();
+	int read();
 
 private:
 	int pino;
@@ -33,6 +40,7 @@ class ar
 public:
 	ar(int pin);
 	int r();
+	int read();
 
 private:
 	int pino;
@@ -45,6 +53,7 @@ class pwm
 public:
 	pwm(int pin, int frequency, int adc_resolution, int channel, int porcentageORdutyCycle);
 	void w(int valor);
+	void write(int valor);
 
 private:
 	int ch, pOp, dutyCycle, pow_res;
@@ -84,6 +93,7 @@ class ntc
 public:
 	ntc(int pin, float vcc, int resistor, int analog_resolution, int kelvin, int resistance_25c);
 	float r(String reading);
+	float read(String reading);
 
 private:
 	float p, v, r1, ar, k, r25c;
@@ -95,6 +105,7 @@ class ntc_cal
 public:
 	ntc_cal(int pin, float vcc, int resistor, int analog_resolution, int kelvin, int resistance_25c);
 	float r(String reading);
+	float read(String reading);
 
 private:
 	float p, v, r1, ar, k, r25c;

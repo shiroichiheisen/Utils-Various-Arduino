@@ -10,8 +10,31 @@ void dw::h()
 {
   digitalWrite(pino, HIGH);
 }
-
+void dw::high()
+{
+  digitalWrite(pino, HIGH);
+}
+void dw::open()
+{
+  digitalWrite(pino, HIGH);
+}
+void dw::on()
+{
+  digitalWrite(pino, HIGH);
+}
 void dw::l()
+{
+  digitalWrite(pino, LOW);
+}
+void dw::low()
+{
+  digitalWrite(pino, LOW);
+}
+void dw::close()
+{
+  digitalWrite(pino, LOW);
+}
+void dw::off()
 {
   digitalWrite(pino, LOW);
 }
@@ -23,6 +46,12 @@ dr::dr(int pin)
 }
 
 int dr::r()
+{
+  leitura = digitalRead(pino);
+  return leitura;
+}
+
+int dr::read()
 {
   leitura = digitalRead(pino);
   return leitura;
@@ -40,6 +69,12 @@ int ar::r()
   return leitura;
 }
 
+int ar::read()
+{
+  leitura = analogRead(pino);
+  return leitura;
+}
+
 pwm::pwm(int pin, int frequency, int adc_resolution, int channel, int porcentageORdutyCycle)
 {
   pow_res = pow(2, adc_resolution);
@@ -50,6 +85,15 @@ pwm::pwm(int pin, int frequency, int adc_resolution, int channel, int porcentage
 }
 
 void pwm::w(int valor)
+{
+  if (pOp)
+    dutyCycle = map(valor, 0, 100, 0, pow_res);
+  else
+    dutyCycle = map(valor, 0, pow_res, 0, pow_res);
+  ledcWrite(ch, dutyCycle);
+}
+
+void pwm::write(int valor)
 {
   if (pOp)
     dutyCycle = map(valor, 0, 100, 0, pow_res);
@@ -206,6 +250,31 @@ float ntc::r(String reading)
   return choose;
 }
 
+float ntc::read(String reading)
+{
+  float RT, VR, ln, TX, T0, VRT;
+  int choose = 0;
+  T0 = 25 + 273.15;
+
+  VRT = analogRead(p);
+  VRT = (v / (pow(2, ar) - 1)) * VRT;
+  VR = v - VRT;
+  RT = VRT / (VR / r1);
+
+  ln = log(RT / r25c);
+  TX = (1 / ((ln / k) + (1 / T0)));
+
+  TX = TX - 273.15;
+
+  if (reading == "c")
+    choose = TX;
+  if (reading == "f")
+    choose = ((TX * 1.8) + 32);
+  if (reading == "k")
+    choose = TX + 273.15;
+
+  return choose;
+}
 ntc_cal::ntc_cal(int pin, float vcc, int resistor, int analog_resolution, int kelvin, int resistance_25c)
 {
   // p = pin;
@@ -218,6 +287,31 @@ ntc_cal::ntc_cal(int pin, float vcc, int resistor, int analog_resolution, int ke
 }
 
 float ntc_cal::r(String reading)
+{
+  float RT, VR, ln, TX, T0, VRT;
+  int choose = 0;
+  T0 = 25 + 273.15;
+
+  VRT = NTCreading.readRaw();
+  VRT = (v / (pow(2, ar) - 1)) * VRT;
+  VR = v - VRT;
+  RT = VRT / (VR / r1);
+
+  ln = log(RT / r25c);
+  TX = (1 / ((ln / k) + (1 / T0)));
+
+  TX = TX - 273.15;
+
+  if (reading == "c")
+    choose = TX;
+  if (reading == "f")
+    choose = ((TX * 1.8) + 32);
+  if (reading == "k")
+    choose = TX + 273.15;
+
+  return choose;
+}
+float ntc_cal::read(String reading)
 {
   float RT, VR, ln, TX, T0, VRT;
   int choose = 0;

@@ -10,6 +10,8 @@ To use this library, you need to download, install the library, and include the 
 #include <utils_various.h>
 ```
 
+Also download the [Esp32AnalogRead](https://github.com/madhephaestus/ESP32AnalogRead) to work with the library.
+
 In this library, you have:
 
 [dw - Digital Write](https://github.com/shiroichiheisen/Utils-Various-Arduino#dw-function)
@@ -42,8 +44,14 @@ After declaring, you can activate and deactivate the pin:
 
 ```
 led.h(); //Activate the pin
+led.high(); //Activate the pin
+led.on(); //Activate the pin
+led.open(); //Activate the pin
 
 led.l(); //Deactivate the pin
+led.low(); //Deactivate the pin
+led.off(); //Deactivate the pin
+led.close(); //Deactivate the pin
 ```
 
 ---
@@ -60,6 +68,7 @@ After declaring, you can read the state of the pin:
 
 ```
 button.r();
+button.read();
 ```
 
 ---
@@ -76,6 +85,7 @@ After declaring, you can read the pin:
 
 ```
 pot.r();
+pot.read();
 ```
 
 ---
@@ -92,6 +102,7 @@ To change the PWM on the pin just call the object with the value you want to wri
 
 ```
 mosfet.w(int pwmValue);
+mosfet.write(int pwmValue);
 ```
 
 ---
@@ -242,6 +253,7 @@ After declared, read the NTC with the celsius, fahrenheit or Kelvin temperature 
 
 ```
 tempSensor.r(String temperatureSelection);
+tempSensor.read(String temperatureSelection);
 ```
 
 ---
@@ -268,4 +280,5 @@ After declared, read the NTC with the celsius, fahrenheit or Kelvin temperature 
 
 ```
 tempSensor.r(String temperatureSelection);
+tempSensor.read(String temperatureSelection);
 ```
