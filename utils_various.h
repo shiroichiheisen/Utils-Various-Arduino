@@ -4,8 +4,6 @@
 #include <Arduino.h>
 #include <ESP32AnalogRead.h>
 
-int debugenabled = 0;
-
 void enableDebug(int velocity);
 void debug(String message);
 void debug(int message);

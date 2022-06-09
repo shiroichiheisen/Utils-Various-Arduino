@@ -337,6 +337,8 @@ float ntc_cal::read(String reading)
   return choose;
 }
 
+int debugenabled = 0;
+
 void enableDebug(int velocity)
 {
   if (velocity)
