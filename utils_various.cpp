@@ -337,28 +337,37 @@ float ntc_cal::read(String reading)
   return choose;
 }
 
-void enableDebug(boolean enable)
+void enableDebug(int velocity)
 {
-  debugEnabled = enable;
+  if (velocity)
+  {
+    debugenabled = 1;
+    Serial.begin(velocity);
+  }
+  else
+  {
+    debugenabled = 0;
+    Serial.end();
+  }
 }
 
 void debug(String message)
 {
-  if (!debugEnabled)
+  if (!debugenabled)
     return;
   Serial.println(message);
 }
 
 void debug(int integer)
 {
-  if (!debugEnabled)
+  if (!debugenabled)
     return;
   Serial.println(integer);
 }
 
 void debug(float Float)
 {
-  if (!debugEnabled)
+  if (!debugenabled)
     return;
   Serial.println(Float);
 }

@@ -41,7 +41,9 @@ The debug function is for debbuging parts of your code and if you want to keep t
 To use the debug function, you need to declare the following function in your project:
 
 ```
-enableDebug(TRUE); //To enable the debug function (TRUE or FALSE)
+enableDebug(115200); 
+//To enable the debug function just call the function with the baudrate of your serial monitor.
+//To disable the debug function just call the function with 0.
 ```
 
 After declaring, you can send data so serial via the debug function:
