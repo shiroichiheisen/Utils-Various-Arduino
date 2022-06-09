@@ -14,6 +14,8 @@ Also download the [Esp32AnalogRead](https://github.com/madhephaestus/ESP32Analog
 
 In this library, you have:
 
+[debug - Debug function](https://github.com/shiroichiheisen/Utils-Various-Arduino#debug-function)
+
 [dw - Digital Write](https://github.com/shiroichiheisen/Utils-Various-Arduino#dw-function)
 
 [dr - Digital Read](https://github.com/shiroichiheisen/Utils-Various-Arduino#dr-function)
@@ -29,6 +31,28 @@ In this library, you have:
 [ntc - ntc Reading](https://github.com/shiroichiheisen/Utils-Various-Arduino#ntc-function)
 
 [ntc_cal - ntc Reading Calibrated on the ESP32](https://github.com/shiroichiheisen/Utils-Various-Arduino#ntc_cal-function) 
+
+---
+
+## debug function:
+
+The debug function is for debbuging parts of your code and if you want to keep them for later use you can disable the debugs.
+
+To use the debug function, you need to declare the following function in your project:
+
+```
+enableDebug(TRUE); //To enable the debug function (TRUE or FALSE)
+```
+
+After declaring, you can send data so serial via the debug function:
+
+```
+debug("Hello World"); //To send data to the serial with string
+
+debug(123); //To send data to the serial with integer
+
+debug(123.456); //To send data to the serial with float
+```
 
 ---
 

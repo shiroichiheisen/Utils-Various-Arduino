@@ -3,6 +3,13 @@
 
 #include <Arduino.h>
 #include <ESP32AnalogRead.h>
+
+boolean debugEnabled = false;
+
+void enableDebug(boolean enable);
+void debug(String message);
+void debug(int message);
+
 // Class for making an digitalwrite
 class dw
 {

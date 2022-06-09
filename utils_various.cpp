@@ -336,3 +336,29 @@ float ntc_cal::read(String reading)
 
   return choose;
 }
+
+void enableDebug(boolean enable)
+{
+  debugEnabled = enable;
+}
+
+void debug(String message)
+{
+  if (!debugEnabled)
+    return;
+  Serial.println(message);
+}
+
+void debug(int integer)
+{
+  if (!debugEnabled)
+    return;
+  Serial.println(integer);
+}
+
+void debug(float Float)
+{
+  if (!debugEnabled)
+    return;
+  Serial.println(Float);
+}
