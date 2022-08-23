@@ -4,9 +4,9 @@
 #include <Arduino.h>
 #include <ESP32AnalogRead.h>
 
-void enableDebug(int velocity);
-void debug(String message);
-void debug(int message);
+#define enabledebug(velocity) Serial.begin(velocity)
+#define debug(message) Serial.println(message)
+
 
 // Class for making an digitalwrite
 class dw
@@ -44,13 +44,15 @@ class ar
 {
 public:
 	ar(int pin);
-	int r();
-	int read();
+	uint16_t r();
+	uint16_t read();
 
 private:
 	int pino;
-	int leitura;
 };
+
+#define pwm_porcentage 0
+#define pwm_dutyCycle 1
 
 // Class for making an pwm write
 class pwm
@@ -61,7 +63,7 @@ public:
 	void write(int valor);
 
 private:
-	int ch, pOp, dutyCycle, pow_res;
+	int ch, pOp, dutyc, pow_res;
 };
 
 // Class for making an string split

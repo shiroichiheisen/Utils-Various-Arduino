@@ -63,16 +63,14 @@ ar::ar(int pin)
   pino = pin;
 }
 
-int ar::r()
+uint16_t ar::r()
 {
-  leitura = analogRead(pino);
-  return leitura;
+  return analogRead(pino);
 }
 
-int ar::read()
+uint16_t ar::read()
 {
-  leitura = analogRead(pino);
-  return leitura;
+  return analogRead(pino);
 }
 
 pwm::pwm(int pin, int frequency, int adc_resolution, int channel, int porcentageORdutyCycle)
@@ -86,20 +84,20 @@ pwm::pwm(int pin, int frequency, int adc_resolution, int channel, int porcentage
 
 void pwm::w(int valor)
 {
-  if (pOp)
-    dutyCycle = map(valor, 0, 100, 0, pow_res);
+  if (pwm_porcentage)
+    dutyc = map(valor, 0, 100, 0, pow_res);
   else
-    dutyCycle = map(valor, 0, pow_res, 0, pow_res);
-  ledcWrite(ch, dutyCycle);
+    dutyc = valor;
+  ledcWrite(ch, dutyc);
 }
 
 void pwm::write(int valor)
 {
   if (pOp)
-    dutyCycle = map(valor, 0, 100, 0, pow_res);
+    dutyc = map(valor, 0, 100, 0, pow_res);
   else
-    dutyCycle = map(valor, 0, pow_res, 0, pow_res);
-  ledcWrite(ch, dutyCycle);
+    dutyc = map(valor, 0, pow_res, 0, pow_res);
+  ledcWrite(ch, dutyc);
 }
 
 ss::ss(String data)
@@ -335,41 +333,4 @@ float ntc_cal::read(String reading)
     choose = TX + 273.15;
 
   return choose;
-}
-
-int debugenabled = 0;
-
-void enableDebug(int velocity)
-{
-  if (velocity)
-  {
-    debugenabled = 1;
-    Serial.begin(velocity);
-  }
-  else
-  {
-    debugenabled = 0;
-    Serial.end();
-  }
-}
-
-void debug(String message)
-{
-  if (!debugenabled)
-    return;
-  Serial.println(message);
-}
-
-void debug(int integer)
-{
-  if (!debugenabled)
-    return;
-  Serial.println(integer);
-}
-
-void debug(float Float)
-{
-  if (!debugenabled)
-    return;
-  Serial.println(Float);
 }
