@@ -10,8 +10,6 @@ To use this library, you need to download, install the library, and include the 
 #include <utils_various.h>
 ```
 
-Also download the [Esp32AnalogRead](https://github.com/madhephaestus/ESP32AnalogRead) to work with the library.
-
 In this library, you have:
 
 [debug - Debug function](https://github.com/shiroichiheisen/Utils-Various-Arduino#debug-function)
@@ -22,15 +20,11 @@ In this library, you have:
 
 [ar - Analog Read](https://github.com/shiroichiheisen/Utils-Various-Arduino#ar-function)
 
-[pwm - Control the PWM on Esp32](https://github.com/shiroichiheisen/Utils-Various-Arduino#pwm-function)
-
 [ss - String Split](https://github.com/shiroichiheisen/Utils-Various-Arduino#ss-function)
 
 [vs - String verifier with ss](https://github.com/shiroichiheisen/Utils-Various-Arduino#vs-function)
 
 [ntc - ntc Reading](https://github.com/shiroichiheisen/Utils-Various-Arduino#ntc-function)
-
-[ntc_cal - ntc Reading Calibrated on the ESP32](https://github.com/shiroichiheisen/Utils-Various-Arduino#ntc_cal-function) 
 
 ---
 
@@ -112,23 +106,6 @@ After declaring, you can read the pin:
 ```
 pot.r();
 pot.read();
-```
-
----
-
-## pwm function:
-
-The PWM function is a wrapper on the ledc PWM from the ESP32, this part only works with the ESP32, but with better code readability, to use declare the object with the pin, frequency of the PWM, resolution of the PWM, PWM channel and if you will use percentage or duty cycle:
-
-```
-pwm mosfet(int mosfetPin, int pwmFrequency, int pwmResolution, int pwmChannel, int porcentageORdutyCycle);
-```
-
-To change the PWM on the pin just call the object with the value you want to write:
-
-```
-mosfet.w(int pwmValue);
-mosfet.write(int pwmValue);
 ```
 
 ---
@@ -267,33 +244,6 @@ Declare the NTC object with the pin to read, VCC voltage on the resistor, analog
 
 ```
 ntc tempSensor(int sensorPin, float vcc, int resistor, int analog_resolution, int kelvin, int resistance_25c)
-```
-
-After declared, read the NTC with the celsius, fahrenheit or Kelvin temperature preference:
-
-"c" for celsius
-
-"f" for fahrenheit
-
-"k" for kelvin
-
-```
-tempSensor.r(String temperatureSelection);
-tempSensor.read(String temperatureSelection);
-```
-
----
-
-## ntc_cal function:
-
-Read an NTC with the [Analog Read library](https://github.com/madhephaestus/ESP32AnalogRead) with the following connection:
-
-GND---NTC---PIN---RESISTOR---VCC
-
-Declare the NTC object with the pin to read, VCC voltage on the resistor, analog read resolution, the NTC kelvin and NTC resistance at 25° celsius:
-
-```
-ntc_cal tempSensor(int sensorPin, float vcc, int resistor, int analog_resolution, int kelvin, int resistance_25c)
 ```
 
 After declared, read the NTC with the celsius, fahrenheit or Kelvin temperature preference:
