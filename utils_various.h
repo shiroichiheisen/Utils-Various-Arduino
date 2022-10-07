@@ -41,12 +41,13 @@ private:
 class ar
 {
 public:
-	ar(int pin);
-	uint16_t r();
-	uint16_t read();
+	ar(int pin, int analog_resolution = 0, int mVoltage = 0, int mV_or_V = 0, float r1_r2 = 0);
+	float r();
+	float read();
 
 private:
-	int pino;
+	int pino, resolution, mVolt, mvouv;
+	float reading, resistor_r1_r2;
 };
 
 #define pwm_porcentage 0

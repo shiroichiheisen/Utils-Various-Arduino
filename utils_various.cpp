@@ -57,20 +57,45 @@ int dr::read()
   return leitura;
 }
 
-ar::ar(int pin)
+ar::ar(int pin, int analog_resolution, int mVoltage, int mV_or_V, float r1_r2)
 {
   pinMode(pin, INPUT);
   pino = pin;
+  resolution = analog_resolution;
+  mVolt = mVoltage;
+  resistor_r1_r2 = r1_r2;
+  if (mV_or_V > 0)
+    mvouv = 1000;
+  else
+    mvouv = 1;
 }
 
-uint16_t ar::r()
+float ar::r()
 {
-  return analogRead(pino);
+  if (resolution)
+    if (resistor_r1_r2)
+      reading = (map(analogRead(pino), 0, pow(2, resolution), 0, mVolt) * (resistor_r1_r2 + 1));
+    else
+      reading = map(analogRead(pino), 0, pow(2, resolution), 0, mVolt);
+  else
+    reading = analogRead(pino);
+
+  reading /= mvouv;
+  return reading;
 }
 
-uint16_t ar::read()
+float ar::read()
 {
-  return analogRead(pino);
+  if (resolution)
+    if (resistor_r1_r2)
+      reading = (map(analogRead(pino), 0, pow(2, resolution), 0, mVolt) * (resistor_r1_r2 + 1));
+    else
+      reading = map(analogRead(pino), 0, pow(2, resolution), 0, mVolt);
+  else
+    reading = analogRead(pino);
+
+  reading /= mvouv;
+  return reading;
 }
 
 ss::ss(String data)
