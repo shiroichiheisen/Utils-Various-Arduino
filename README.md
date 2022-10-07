@@ -37,7 +37,6 @@ To use the debug function, you need to declare the following function in your pr
 ```
 enableDebug(115200); 
 //To enable the debug function just call the function with the baudrate of your serial monitor.
-//To disable the debug function just call the function with 0.
 ```
 
 After declaring, you can send data so serial via the debug function:
@@ -95,10 +94,24 @@ button.read();
 
 ## ar function:
 
-The ar function is a wrapper on the analogRead, but with better code readability, to use, declare the ar object with the pin:
+The ar function is a wrapper on the analogRead, but with better code readability.
+
+To use declare the object with the:
+
+potPin - Pin to read from - Mandatory
+
+analog_resolution - analog resolution of the adc to convert the readings to milivolts or volts - Not Mandatory
+
+mVoltage - Input volt on the device calculated on milivolts - Not Mandatory
+
+mV_or_V - when reading do you want to get data on milivolts or volts - Not Mandatory
+
+r1/r2 - for resistors dividers, the r1/r2 calculation -  Not Mandatory
+
 
 ```
-ar pot(int potPin);
+ar pot(int potPin, int analog_resolution, int mVoltage, int mV_or_V, float r1_r2);
+
 ```
 
 After declaring, you can read the pin:
