@@ -11,14 +11,22 @@ class dw
 {
 public:
 	dw(int pin);
+	// Send a digitalWrite(PIN,HIGH);
+	void high() { h(); };
+	// Send a digitalWrite(PIN,HIGH);
+	void open() { h(); };
+	// Send a digitalWrite(PIN,HIGH);
+	void on() { h(); };
+	// Send a digitalWrite(PIN,HIGH);
 	void h();
-	void high();
-	void open();
-	void on();
+	// Send a digitalWrite(PIN,LOW);
+	void low() { l(); };
+	// Send a digitalWrite(PIN,LOW);
+	void close() { l(); };
+	// Send a digitalWrite(PIN,LOW);
+	void off() { l(); };
+	// Send a digitalWrite(PIN,LOW);
 	void l();
-	void low();
-	void close();
-	void off();
 
 private:
 	int pino;
@@ -29,8 +37,10 @@ class dr
 {
 public:
 	dr(int pin);
+	// Make a DigitalRead(PIN);
+	int read() { return r(); };
+	// Make a DigitalRead(PIN);
 	int r();
-	int read();
 
 private:
 	int pino;
@@ -42,25 +52,23 @@ class ar
 {
 public:
 	ar(int pin, int analog_resolution = 0, int mVoltage = 0, int mV_or_V = 0, float r1_r2 = 0);
+	// Make a AnalogRead(PIN);
+	float read() { return r(); };
+	// Make a AnalogRead(PIN);
 	float r();
-	float read();
 
 private:
 	int pino, resolution, mVolt, mvouv;
 	float reading, resistor_r1_r2;
 };
 
-#define pwm_porcentage 0
-#define pwm_dutyCycle 1
-
 // Class for making an string split
 class ss
 {
 public:
-	ss(String data);
+	ss(String data = "");
 	void new_data(String data);
-	void rnw(char separator, int index);
-	void rnw(char separator, int index, char separator2, int index2);
+	void rnw(char separator, int index, char separator2 = '/', int index2 = 0);
 	String get(char separator, int index);
 
 private:
@@ -86,8 +94,10 @@ class ntc
 {
 public:
 	ntc(int pin, float vcc, int resistor, int analog_resolution, int kelvin, int resistance_25c);
+	// Read the NTC();
+	float read(String reading) { return r(reading); };
+	// Read the NTC();
 	float r(String reading);
-	float read(String reading);
 
 private:
 	float p, v, r1, ar, k, r25c;

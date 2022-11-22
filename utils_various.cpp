@@ -10,31 +10,8 @@ void dw::h()
 {
   digitalWrite(pino, HIGH);
 }
-void dw::high()
-{
-  digitalWrite(pino, HIGH);
-}
-void dw::open()
-{
-  digitalWrite(pino, HIGH);
-}
-void dw::on()
-{
-  digitalWrite(pino, HIGH);
-}
+
 void dw::l()
-{
-  digitalWrite(pino, LOW);
-}
-void dw::low()
-{
-  digitalWrite(pino, LOW);
-}
-void dw::close()
-{
-  digitalWrite(pino, LOW);
-}
-void dw::off()
 {
   digitalWrite(pino, LOW);
 }
@@ -47,14 +24,7 @@ dr::dr(int pin)
 
 int dr::r()
 {
-  leitura = digitalRead(pino);
-  return leitura;
-}
-
-int dr::read()
-{
-  leitura = digitalRead(pino);
-  return leitura;
+  return digitalRead(pino);
 }
 
 ar::ar(int pin, int analog_resolution, int mVoltage, int mV_or_V, float r1_r2)
@@ -84,20 +54,6 @@ float ar::r()
   return reading;
 }
 
-float ar::read()
-{
-  if (resolution)
-    if (resistor_r1_r2)
-      reading = (map(analogRead(pino), 0, pow(2, resolution), 0, mVolt) * (resistor_r1_r2 + 1));
-    else
-      reading = map(analogRead(pino), 0, pow(2, resolution), 0, mVolt);
-  else
-    reading = analogRead(pino);
-
-  reading /= mvouv;
-  return reading;
-}
-
 ss::ss(String data)
 {
   data_received = data;
@@ -106,24 +62,6 @@ ss::ss(String data)
 void ss::new_data(String data)
 {
   data_received = data;
-}
-
-void ss::rnw(char separator, int index)
-{
-  int found = 0;
-  int strIndex[] = {0, -1};
-  int maxIndex = data_received.length() - 1;
-
-  for (int i = 0; i <= maxIndex && found <= index; i++)
-  {
-    if (data_received.charAt(i) == separator || i == maxIndex)
-    {
-      found++;
-      strIndex[0] = strIndex[1] + 1;
-      strIndex[1] = (i == maxIndex) ? i + 1 : i;
-    }
-  }
-  data_received = found > index ? data_received.substring(strIndex[0], strIndex[1]) : "";
 }
 
 void ss::rnw(char separator, int index, char separator2, int index2)
@@ -142,21 +80,25 @@ void ss::rnw(char separator, int index, char separator2, int index2)
     }
   }
   data_received = found > index ? data_received.substring(strIndex[0], strIndex[1]) : "";
-
-  int found2 = 0;
-  int strIndex2[] = {0, -1};
-  int maxIndex2 = data_received.length() - 1;
-
-  for (int i2 = 0; i2 <= maxIndex2 && found2 <= index2; i2++)
+  if (index2 == 0)
+    return;
+  else
   {
-    if (data_received.charAt(i2) == separator2 || i2 == maxIndex2)
+    int found2 = 0;
+    int strIndex2[] = {0, -1};
+    int maxIndex2 = data_received.length() - 1;
+
+    for (int i2 = 0; i2 <= maxIndex2 && found2 <= index2; i2++)
     {
-      found2++;
-      strIndex2[0] = strIndex2[1] + 1;
-      strIndex2[1] = (i2 == maxIndex2) ? i2 + 1 : i2;
+      if (data_received.charAt(i2) == separator2 || i2 == maxIndex2)
+      {
+        found2++;
+        strIndex2[0] = strIndex2[1] + 1;
+        strIndex2[1] = (i2 == maxIndex2) ? i2 + 1 : i2;
+      }
     }
+    data_received = found2 > index2 ? data_received.substring(strIndex2[0], strIndex2[1]) : "";
   }
-  data_received = found2 > index2 ? data_received.substring(strIndex2[0], strIndex2[1]) : "";
 }
 
 String ss::get(char separator, int index)
@@ -221,32 +163,6 @@ ntc::ntc(int pin, float vcc, int resistor, int analog_resolution, int kelvin, in
 }
 
 float ntc::r(String reading)
-{
-  float RT, VR, ln, TX, T0, VRT;
-  int choose = 0;
-  T0 = 25 + 273.15;
-
-  VRT = analogRead(p);
-  VRT = (v / (pow(2, ar) - 1)) * VRT;
-  VR = v - VRT;
-  RT = VRT / (VR / r1);
-
-  ln = log(RT / r25c);
-  TX = (1 / ((ln / k) + (1 / T0)));
-
-  TX = TX - 273.15;
-
-  if (reading == "c")
-    choose = TX;
-  if (reading == "f")
-    choose = ((TX * 1.8) + 32);
-  if (reading == "k")
-    choose = TX + 273.15;
-
-  return choose;
-}
-
-float ntc::read(String reading)
 {
   float RT, VR, ln, TX, T0, VRT;
   int choose = 0;
