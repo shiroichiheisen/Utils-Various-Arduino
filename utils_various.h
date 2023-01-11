@@ -103,4 +103,18 @@ private:
 	float p, v, r1, ar, k, r25c;
 };
 
+// Resistor divider voltage calculation class - VCC-Resistor-PIN-Resistor-GND
+class RdividerCalc
+{
+public:
+	RdividerCalc(int pin, int analog_resolution, int mVoltage, float r1_r2);
+	// Make a resistor divider voltage calculation;
+	float read() { return r(); };
+	// Make a resistor divider voltage calculation;
+	float r();
+
+private:
+	int pino, resolution, mVolt;
+	float resistor_r1_r2;
+};
 #endif

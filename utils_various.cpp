@@ -187,3 +187,18 @@ float ntc::r(String reading)
 
   return choose;
 }
+
+RdividerCalc::RdividerCalc(int pin, int analog_resolution, int mVoltage, float r1_r2)
+{
+  pinMode(pin, INPUT);
+  pino = pin;
+  resolution = analog_resolution;
+  mVolt = mVoltage;
+  resistor_r1_r2 = r1_r2;
+}
+
+float RdividerCalc::r()
+{
+  float reading = map(analogRead(pino), 0, pow(2, resolution), 0, mVolt) * (resistor_r1_r2 + 1);
+  return reading;
+}

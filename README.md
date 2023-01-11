@@ -26,6 +26,8 @@ In this library, you have:
 
 [ntc - ntc Reading](https://github.com/shiroichiheisen/Utils-Various-Arduino#ntc-function)
 
+[RdividerCalc - Resistor divider mVoltage calculation](https://github.com/shiroichiheisen/Utils-Various-Arduino#ntc-function)
+
 ---
 
 ## debug function:
@@ -271,3 +273,34 @@ After declared, read the NTC with the celsius, fahrenheit or Kelvin temperature 
 tempSensor.r(String temperatureSelection);
 tempSensor.read(String temperatureSelection);
 ```
+
+---
+
+## RdividerCalc function:
+
+The RdividerCalc function is a resistor divider voltage calculator.
+
+To use declare the object with the:
+
+potPin - Pin to read from - Mandatory
+
+analog_resolution - analog resolution of the adc to convert the readings to milivolts or volts - Mandatory
+
+mVoltage - Input volt on the device calculated on milivolts - Mandatory
+
+r1/r2 - resistor divider, the r1/r2 calculation - Mandatory
+
+
+```
+ar pot(int potPin, int analog_resolution, int mVoltage, float r1_r2);
+
+```
+
+After declaring, you can read the pin:
+
+```
+pot.r();
+pot.read();
+```
+
+---
