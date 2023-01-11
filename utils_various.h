@@ -107,14 +107,14 @@ private:
 class RdividerCalc
 {
 public:
-	RdividerCalc(int pin, int analog_resolution, int mVoltage, float r1_r2);
+	RdividerCalc(int analog_resolution, int mVoltage, float r1_r2);
 	// Make a resistor divider voltage calculation;
-	float read() { return r(); };
+	float read(int reading) { return r(reading); };
 	// Make a resistor divider voltage calculation;
-	float r();
+	float r(int reading);
 
 private:
-	int pino, resolution, mVolt;
+	int resolution, mVolt;
 	float resistor_r1_r2;
 };
 #endif
