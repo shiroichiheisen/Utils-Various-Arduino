@@ -1,9 +1,18 @@
 #include "utils_various.h"
 
-dw::dw(int pin)
+dw::dw(int pin, int initState)
 {
   pinMode(pin, OUTPUT);
   pino = pin;
+  switch (initState)
+  {
+  case 1:
+    h();
+    break;
+  case 2:
+    l();
+    break;
+  }
 }
 
 void dw::h()
@@ -59,7 +68,7 @@ ss::ss(String data)
   data_received = data;
 }
 
-void ss::new_data(String data)
+void ss::newData(String data)
 {
   data_received = data;
 }
@@ -80,7 +89,7 @@ void ss::rnw(char separator, int index, char separator2, int index2)
     }
   }
   data_received = found > index ? data_received.substring(strIndex[0], strIndex[1]) : "";
-  if (index2 == 0)
+  if (separator2 == '¨')
     return;
   else
   {
@@ -178,11 +187,11 @@ float ntc::r(String reading)
 
   TX = TX - 273.15;
 
-  if (reading == "c")
+  if (reading == "C")
     choose = TX;
-  if (reading == "f")
+  if (reading == "F")
     choose = ((TX * 1.8) + 32);
-  if (reading == "k")
+  if (reading == "K")
     choose = TX + 273.15;
 
   return choose;

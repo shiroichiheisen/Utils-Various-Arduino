@@ -58,8 +58,12 @@ debug(123.456); //To send data to the serial with float
 The dw function is a wrapper on the digitalWrite, but with better code readability, to use, declare the dw object with the pin:
 
 ```
-dw led(int Ledpin);
+dw led(int Ledpin, int initState);
 ```
+
+if you dont want to inicialize the pin with a state, just dont write the initState on code -> dw led(int Ledpin);
+initState = 1 -> pin will inicialize on high level
+initState = 2 -> pin will inicialize on low level
 
 After declaring, you can activate and deactivate the pin:
 
