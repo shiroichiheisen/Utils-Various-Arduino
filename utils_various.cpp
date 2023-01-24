@@ -197,7 +197,7 @@ RdividerCalc::RdividerCalc(int analog_resolution, int mVoltage, float r1_r2)
 
 float RdividerCalc::r(int reading)
 {
-  float reading = map(reading, 0, resolution, 0, mVolt);
-  reading = (reading * resistor_r1_r2);
-  return reading;
+  float read = map(reading, 0, resolution, 0, mVolt);
+  read = (read * resistor_r1_r2);
+  return read;
 }
