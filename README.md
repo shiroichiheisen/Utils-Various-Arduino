@@ -104,7 +104,7 @@ button.read();
 
 ## aw function:
 
-The aw function is a wrapper on the danalogWrite, but with better code readability, to use, declare the aw object with the pin:
+The aw function is a wrapper on the analogWrite, but with better code readability, to use, declare the aw object with the pin:
 
 ```
 aw led(int pwmpin);
