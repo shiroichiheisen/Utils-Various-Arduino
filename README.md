@@ -18,6 +18,8 @@ In this library, you have:
 
 [dr - Digital Read](https://github.com/shiroichiheisen/Utils-Various-Arduino#dr-function)
 
+[aw - Analog Write](https://github.com/shiroichiheisen/Utils-Various-Arduino#aw-function)
+
 [ar - Analog Read](https://github.com/shiroichiheisen/Utils-Various-Arduino#ar-function)
 
 [ss - String Split](https://github.com/shiroichiheisen/Utils-Various-Arduino#ss-function)
@@ -96,6 +98,23 @@ After declaring, you can read the state of the pin:
 ```
 button.r();
 button.read();
+```
+
+---
+
+## aw function:
+
+The aw function is a wrapper on the danalogWrite, but with better code readability, to use, declare the aw object with the pin:
+
+```
+aw led(int pwmpin);
+```
+
+After declaring, you can use the pwm on the pin:
+
+```
+led.w(int value); //Write to pin
+led.write(int value); //Write to pin
 ```
 
 ---

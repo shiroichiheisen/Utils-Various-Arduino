@@ -1,5 +1,15 @@
 #include "utils_various.h"
 
+aw::aw(int pin)
+{
+  pino = pin;
+}
+
+void aw::w(int value)
+{
+  analogWrite(pino, value);
+}
+
 dw::dw(int pin, int initState)
 {
   pinMode(pin, OUTPUT);

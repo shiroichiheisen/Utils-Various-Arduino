@@ -140,6 +140,33 @@ private:
 };
 
 /**
+ * @brief  Analog Write Wrapper
+ *
+ * Just a Wrapper on the analogWrite function.
+ *
+ * @param pin The pin to write
+ *
+ */
+class aw
+{
+public:
+	aw(int pin);
+	/**
+	 * @brief  Write the value on pin using the analogWrite(pin,value);.
+	 *
+	 */
+	void write(int value) { return w(value); };
+	/**
+	 * @brief  Write the value on pin using the analogWrite(pin,value);.
+	 *
+	 */
+	void w(int value);
+
+private:
+	int pino;
+};
+
+/**
  * @brief  Split the String function
  *
  * You can split the string and return the index of the string splitted.
