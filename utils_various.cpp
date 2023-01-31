@@ -2,6 +2,7 @@
 
 aw::aw(int pin)
 {
+  pinMode(pin, OUTPUT);
   pino = pin;
 }
 
@@ -62,14 +63,15 @@ ar::ar(int pin, int analog_resolution, int mVoltage, int mV_or_V, float r1_r2)
 float ar::r()
 {
   if (resolution)
+  {
     if (resistor_r1_r2)
       reading = (map(analogRead(pino), 0, pow(2, resolution), 0, mVolt) * (resistor_r1_r2 + 1));
     else
       reading = map(analogRead(pino), 0, pow(2, resolution), 0, mVolt);
+    reading /= mvouv;
+  }
   else
     reading = analogRead(pino);
-
-  reading /= mvouv;
   return reading;
 }
 
