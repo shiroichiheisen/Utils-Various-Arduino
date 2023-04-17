@@ -135,9 +135,14 @@ mV_or_V - when reading do you want to get data on milivolts or volts - Not Manda
 
 r1/r2 - for resistors dividers, the r1/r2 calculation -  Not Mandatory
 
+Can be used to calculate the analogRead from the reading to miliVolts, just dont include the r1_r2 on the end of the declaration.
+
 
 ```
-ar pot(int potPin, int analog_resolution, int mVoltage, int mV_or_V, float r1_r2);
+
+ar pot(int potPin); //to read the analog read
+ar pot(int potPin, int analog_resolution, int mVoltage, int mV_or_V); //to read and calculate the miliVolts on the pin
+ar pot(int potPin, int analog_resolution, int mVoltage, int mV_or_V, float r1_r2); //to read and calculate the voltage on the resistors dividers
 
 ```
 
@@ -282,8 +287,12 @@ GND---NTC---PIN---RESISTOR---VCC
 
 Declare the NTC object with the pin to read, VCC voltage on the resistor, analog read resolution, the NTC kelvin, and NTC resistance at 25° celsius:
 
+The resistor value is in Ohms.
+Vcc is in Volts.
+Resistance on 25ºC is in Ohms.
+
 ```
-ntc tempSensor(int sensorPin, float vcc, int resistor, int analog_resolution, int kelvin, int resistance_25c)
+ntc tempSensor(int sensorPin, float vcc, int resistorValue, int analog_resolution, int kelvin, int resistance_25c)
 ```
 
 After declared, read the NTC with the celsius, fahrenheit or Kelvin temperature preference:

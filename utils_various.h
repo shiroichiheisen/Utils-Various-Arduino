@@ -108,7 +108,6 @@ private:
  * @param pin The pin to read
  * @param analog_resolution The analog resolution of the adc - not required
  * @param mVoltage The vcc of the adc or microcontroler being used - not required
- * @param mV_or_V If you want milivolts or volts on the return of the resistor divider calculation - not required
  * @param r1_r2 The calculation of r1/r2 - not required
  *
  * @return
@@ -117,7 +116,7 @@ private:
 class ar
 {
 public:
-	ar(int pin, int analog_resolution = 0, int mVoltage = 0, int mV_or_V = 0, float r1_r2 = 0);
+	ar(uint8_t pin, uint8_t analog_resolution = 0, uint16_t mVoltage = 0, float r1_r2 = 0);
 	/**
 	 * @brief  Read and return the analog read of the pin or resistor divider calculation.
 	 *
@@ -134,8 +133,9 @@ public:
 	float r();
 
 private:
-	int pino, resolution, mVolt, mvouv;
-	float reading, resistor_r1_r2;
+	uint8_t pino, resolution;
+	uint16_t mVolt, reading;
+	float resistor_r1_r2;
 };
 
 /**
@@ -149,20 +149,20 @@ private:
 class aw
 {
 public:
-	aw(int pin);
+	aw(uint8_t pin);
 	/**
 	 * @brief  Write the value on pin using the analogWrite(pin,value);.
 	 *
 	 */
-	void write(int value) { return w(value); };
+	void write(uint16_t value) { return w(value); };
 	/**
 	 * @brief  Write the value on pin using the analogWrite(pin,value);.
 	 *
 	 */
-	void w(int value);
+	void w(uint16_t value);
 
 private:
-	int pino;
+	uint8_t pino;
 };
 
 /**
@@ -195,7 +195,7 @@ public:
 	 * @param index2 The index of the result from the first string splitted with the separator2 (default -> 0) - not required
 	 *
 	 */
-	void rnw(char separator, int index, char separator2 = '¨', int index2 = 0);
+	void rnw(char separator, uint8_t index, char separator2, int8_t index2 = -1);
 	/**
 	 * @brief  Get the result from selected index splitting the string with the separator.
 	 *
@@ -205,7 +205,7 @@ public:
 	 * @return
 	 *   - The result of the index of the string splitted.
 	 */
-	String get(char separator, int index);
+	String get(char separator, uint8_t index);
 
 private:
 	String data_received, data_reformed;
@@ -230,7 +230,7 @@ private:
 class vs
 {
 public:
-	vs(String initialString, int indexInitialString = 0, char charSeparator = '|', String verifyError = "", String finalString = "", int indexFinalString = 2);
+	vs(String initialString, uint8_t indexInitialString = 0, char charSeparator = '|', String verifyError = "", String finalString = "", uint8_t indexFinalString = 2);
 	/**
 	 * @brief  Input the string to verify if the string is correct and return the data from the string if the string is correct or the verifyError string if the string is not correct.
 	 *
@@ -238,7 +238,7 @@ public:
 	 * @param result The string to return if the string is correct (using reference)
 	 * @param resultIndex The index of the string splitted to return if the string is correct (default -> 1)
 	 */
-	void verify(String input, String &result, int resultIndex = 1);
+	void verify(String input, String &result, uint8_t resultIndex = 1);
 	/**
 	 * @brief  Input the string to verify if the string is correct and return the data from the string if the string is correct or the verifyError string if the string is not correct.
 	 *
@@ -248,12 +248,12 @@ public:
 	 * @return
 	 *   - The string if the string is correct.
 	 */
-	String verify(String input, int resultIndex = 1);
+	String verify(String input, uint8_t resultIndex = 1);
 
 private:
 	String initial, final, verError;
 	char separator;
-	int initialI, finalI;
+	uint8_t initialI, finalI;
 };
 
 /**
@@ -274,7 +274,7 @@ private:
 class ntc
 {
 public:
-	ntc(int pin, float vcc, int resistor, int analog_resolution, int kelvin, int resistance_25c);
+	ntc(uint8_t pin, float vcc, uint32_t resistor, uint8_t analog_resolution, uint16_t kelvin, uint32_t resistance_25c);
 	/**
 	 *  @brief  Read the NTC and return the temperature of the NTC.
 	 *
@@ -283,7 +283,7 @@ public:
 	 * @return
 	 * - The temperature of the NTC.
 	 */
-	float read(String reading = "C") { return r(reading); };
+	int16_t read(String reading = "C") { return r(reading); };
 	/**
 	 *  @brief  Read the NTC and return the temperature of the NTC.
 	 *
@@ -292,10 +292,13 @@ public:
 	 * @return
 	 * - The temperature of the NTC.
 	 */
-	float r(String reading = "C");
+	int16_t r(String reading = "C");
 
 private:
-	float p, v, r1, ar, k, r25c;
+	uint8_t p, ar;
+	uint16_t k;
+	uint32_t r1, r25c;
+	float v;
 };
 
 /**
@@ -313,7 +316,7 @@ private:
 class RdividerCalc
 {
 public:
-	RdividerCalc(int analog_resolution, int mVoltage, float r1_r2);
+	RdividerCalc(uint8_t analog_resolution, uint16_t mVoltage, float r1_r2);
 	/**
 	 * @brief  Read the resistor divider and return the voltage on the Vin of the resistor divider on miliVolts.
 	 *
@@ -322,7 +325,7 @@ public:
 	 * @return
 	 * - The voltage on the Vin of the resistor divider on miliVolts.
 	 */
-	float read(int reading) { return r(reading); };
+	float read(uint16_t reading) { return r(reading); };
 	/**
 	 * @brief  Read the resistor divider and return the voltage on the Vin of the resistor divider on miliVolts.
 	 *
@@ -331,10 +334,11 @@ public:
 	 * @return
 	 * - The voltage on the Vin of the resistor divider on miliVolts.
 	 */
-	float r(int reading);
+	float r(uint16_t reading);
 
 private:
-	int resolution, mVolt;
+	uint8_t resolution;
+	uint16_t mVolt;
 	float resistor_r1_r2;
 };
 #endif
