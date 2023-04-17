@@ -11,7 +11,7 @@ void aw::w(int value)
   analogWrite(pino, value);
 }
 
-dw::dw(int pin, int initState)
+dw::dw(uint8_t pin, uint8_t initState)
 {
   pinMode(pin, OUTPUT);
   pino = pin;
@@ -36,13 +36,13 @@ void dw::l()
   digitalWrite(pino, LOW);
 }
 
-dr::dr(int pin)
+dr::dr(uint8_t pin)
 {
   pinMode(pin, INPUT);
   pino = pin;
 }
 
-int dr::r()
+bool dr::r()
 {
   return digitalRead(pino);
 }

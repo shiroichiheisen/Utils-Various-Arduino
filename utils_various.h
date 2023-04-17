@@ -32,7 +32,7 @@
 class dw
 {
 public:
-	dw(int pin, int initState = 0);
+	dw(uint8_t pin, uint8_t initState = 0);
 	/**
 	 * @brief Turn the pin on.
 	 */
@@ -67,7 +67,7 @@ public:
 	void l();
 
 private:
-	int pino;
+	uint8_t pino;
 };
 
 /**
@@ -80,25 +80,24 @@ private:
 class dr
 {
 public:
-	dr(int pin);
+	dr(uint8_t pin);
 	/**
 	 * @brief  Read and return the pin state.
 	 *
 	 * @return
 	 *   - The pin state.
 	 */
-	int read() { return r(); };
+	bool read() { return r(); };
 	/**
 	 * @brief  Read and return the pin state.
 	 *
 	 * @return
 	 *   - The pin state.
 	 */
-	int r();
+	bool r();
 
 private:
-	int pino;
-	int leitura;
+	uint8_t pino;
 };
 
 /**
