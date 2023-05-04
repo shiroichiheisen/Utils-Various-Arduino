@@ -178,7 +178,7 @@ private:
 class ss
 {
 public:
-	ss(String data = "");
+	ss(String data = "", uint16_t size = 0);
 	/**
 	 * @brief  Set new string to split.
 	 *

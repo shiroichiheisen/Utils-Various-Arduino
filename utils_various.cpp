@@ -70,9 +70,11 @@ float ar::r()
   return reading;
 }
 
-ss::ss(String data)
+ss::ss(String data, uint16_t size)
 {
   data_received = data;
+  if (size > 0)
+    data_received.reserve(size + 1);
 }
 
 void ss::newData(String data)
