@@ -4,6 +4,19 @@
 #include <Arduino.h>
 
 /**
+ * @brief  Check if number is between min and max
+ *
+ * @param value The value to check
+ * @param min The minimum value
+ * @param max The maximum value
+ *
+ * @return
+ * - True if the value is between min and max
+ * - False if the value is not between min and max
+ */
+#define checkIfbetween(value, min, max) ((value >= min) && (value <= max))
+
+/**
  * @brief  Serial.begin Wrapper
  *
  * Just a Wrapper on the Serial.begin function.

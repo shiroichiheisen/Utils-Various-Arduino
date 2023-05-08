@@ -12,6 +12,8 @@ To use this library, you need to download, install the library, and include the 
 
 In this library, you have:
 
+[checkIfbetween - Check if a value is between two values](https://github.com/shiroichiheisen/Utils-Various-Arduino#checkIfbetween-function)
+
 [debug - Debug function](https://github.com/shiroichiheisen/Utils-Various-Arduino#debug-function)
 
 [dw - Digital Write](https://github.com/shiroichiheisen/Utils-Various-Arduino#dw-function)
@@ -29,6 +31,18 @@ In this library, you have:
 [ntc - ntc Reading](https://github.com/shiroichiheisen/Utils-Various-Arduino#ntc-function)
 
 [RdividerCalc - Resistor divider mVoltage calculation](https://github.com/shiroichiheisen/Utils-Various-Arduino#rdividercalc-function)
+
+---
+
+## checkIfbetween function:
+
+The checkIfbetween function is for checking if a value is between two values:
+
+```
+checkIfbetween(int value, int min, int max);
+checkIfbetween(10, 0, 20); //will return true
+checkIfbetween(10, 0, 5); //will return false
+```
 
 ---
 
