@@ -24,6 +24,7 @@
  * @param velocity the velocity of the serial port
  */
 #define enabledebug(velocity) Serial.begin(velocity)
+#define enableserial(velocity) Serial.begin(velocity)
 
 /**
  * @brief  Serial.println Wrapper
@@ -33,6 +34,7 @@
  * @param message the message to print
  */
 #define debug(message) Serial.println(message)
+#define serial(message) Serial.println(message)
 
 /**
  * @brief  Digital Write Wrapper
