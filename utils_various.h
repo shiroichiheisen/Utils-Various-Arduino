@@ -34,6 +34,7 @@
  * @param message the message to print
  */
 #define debug(message) Serial.println(message)
+#define debugM(message, mode) Serial.println(message, mode)
 #define serial(message) Serial.println(message)
 
 /**
