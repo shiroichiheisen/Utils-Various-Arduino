@@ -48,7 +48,8 @@
 class dw
 {
 public:
-	dw(uint8_t pin, uint8_t initState = 0);
+	dw(uint8_t pin, uint8_t initState);
+	dw(uint8_t pin);
 	/**
 	 * @brief Turn the pin on.
 	 */
@@ -132,21 +133,50 @@ private:
 class ar
 {
 public:
-	ar(uint8_t pin, uint8_t analog_resolution = 0, uint16_t mVoltage = 0, float r1_r2 = 0);
+	ar(uint8_t pin);
 	/**
-	 * @brief  Read and return the analog read of the pin or resistor divider calculation.
+	 * @brief  Read and return the analog read of the pin
 	 *
 	 * @return
-	 *   - The analog read of the pin or resistor divider calculation.
+	 *   - The analog read of the pin
 	 */
-	float read() { return r(); };
+	uint32_t read() { return r(); };
 	/**
-	 * @brief  Read and return the analog read of the pin or resistor divider calculation.
+	 * @brief  Read and return the analog read of the pin
 	 *
 	 * @return
-	 *   - The analog read of the pin or resistor divider calculation.
+	 *   - The analog read of the pin
 	 */
-	float r();
+	uint32_t r();
+
+private:
+	uint8_t pino;
+};
+
+/**
+ * @brief  Analog Read Wrapper resistor divider calculator.
+ *
+ * Just a Wrapper on the analogRead function with resistor divider calculator.
+ *
+ * @param pin The pin to read
+ * @param analog_resolution The analog resolution of the adc
+ * @param mVoltage The vcc of the adc or microcontroler being used
+ * @param r1_r2 The calculation of r1/r2
+ *
+ * @return
+ *   - The resistor divider calculation.
+ */
+class ar_calc
+{
+public:
+	ar_calc(uint8_t pin, uint8_t analog_resolution, uint16_t mVoltage, float r1_r2);
+	/**
+	 * @brief  Read and return the resistor divider calculation.
+	 *
+	 * @return
+	 *   - The resistor divider calculation.
+	 */
+	float r_calc();
 
 private:
 	uint8_t pino, resolution;

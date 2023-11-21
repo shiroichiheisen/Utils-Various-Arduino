@@ -26,6 +26,12 @@ dw::dw(uint8_t pin, uint8_t initState)
   }
 }
 
+dw::dw(uint8_t pin)
+{
+  pinMode(pin, OUTPUT);
+  pino = pin;
+}
+
 void dw::h()
 {
   digitalWrite(pino, HIGH);
@@ -47,7 +53,18 @@ bool dr::r()
   return digitalRead(pino);
 }
 
-ar::ar(uint8_t pin, uint8_t analog_resolution, uint16_t mVoltage, float r1_r2)
+ar::ar(uint8_t pin)
+{
+  pinMode(pin, INPUT);
+  pino = pin;
+}
+
+uint32_t ar::r()
+{
+  return analogRead(pino);
+}
+
+ar_calc::ar_calc(uint8_t pin, uint8_t analog_resolution, uint16_t mVoltage, float r1_r2)
 {
   pinMode(pin, INPUT);
   pino = pin;
@@ -56,7 +73,7 @@ ar::ar(uint8_t pin, uint8_t analog_resolution, uint16_t mVoltage, float r1_r2)
   resistor_r1_r2 = r1_r2;
 }
 
-float ar::r()
+float ar_calc::r_calc()
 {
   if (resolution)
   {
