@@ -104,6 +104,13 @@ public:
 	 * @return
 	 *   - The pin state.
 	 */
+	bool operator()() { return r(); }
+	/**
+	 * @brief  Read and return the pin state.
+	 *
+	 * @return
+	 *   - The pin state.
+	 */
 	bool read() { return r(); };
 	/**
 	 * @brief  Read and return the pin state.
@@ -134,6 +141,13 @@ class ar
 {
 public:
 	ar(uint8_t pin);
+	/**
+	 * @brief  Read and return the analog read of the pin
+	 *
+	 * @return
+	 *   - The analog read of the pin
+	 */
+	uint32_t operator()() { return r(); }
 	/**
 	 * @brief  Read and return the analog read of the pin
 	 *
